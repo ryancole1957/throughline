@@ -1,0 +1,58 @@
+{
+  "name": "throughline",
+  "version": "3.4.0",
+  "private": true,
+  "type": "module",
+  "description": "Throughline — open-source delivery workspace with page-to-API mapping",
+  "license": "MIT",
+  "author": "Throughline contributors",
+  "keywords": [
+    "delivery",
+    "knowledge-transfer",
+    "operations",
+    "audit",
+    "express",
+    "react",
+    "sqlite"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c blue,green \"npm:dev:server\" \"npm:dev:web\"",
+    "dev:server": "tsx watch apps/server/src/index.ts",
+    "dev:web": "vite --config apps/web/vite.config.ts",
+    "build": "npm run build:server && npm run build:web",
+    "build:server": "tsup --config apps/server/tsup.config.ts",
+    "build:web": "vite build --config apps/web/vite.config.ts",
+    "start": "node apps/server/dist/index.js",
+    "db:backup": "node scripts/backup.mjs",
+    "check:i18n": "tsx scripts/i18n-check.mts",
+    "test": "vitest run --config apps/server/vitest.config.ts",
+    "test:watch": "vitest --config apps/server/vitest.config.ts",
+    "typecheck": "tsc -p packages/shared/tsconfig.json --noEmit && tsc -p apps/server/tsconfig.json --noEmit && tsc -p apps/web/tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "concurrently": "^10.0.6",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "prettier": "^3.6.2",
+    "tsup": "^9.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.0",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  }
+}

@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+coverage/
+*.tsbuildinfo
+
+# Runtime data
+data/*
+!data/.gitkeep
+*.db
+*.db-shm
+*.db-wal
+backups/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+.vite/
+.cache/
+
+# Local agent scratch data
+.video_agent/

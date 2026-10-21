@@ -1,0 +1,58 @@
+name: throughline
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: throughline:3.4.0
+    restart: unless-stopped
+    init: true
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      PORT: "4000"
+      DATABASE_PATH: /app/data/throughline.db
+      WEB_DIST_PATH: /app/apps/web/dist
+      TRUST_PROXY: "1"
+    expose:
+      - "4000"
+    volumes:
+      - throughline-data:/app/data
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  caddy:
+    image: caddy:2.8-alpine
+    restart: unless-stopped
+    init: true
+    depends_on:
+      app:
+        condition: service_healthy
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:-localhost}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  throughline-data:
+  caddy-data:
+  caddy-config:

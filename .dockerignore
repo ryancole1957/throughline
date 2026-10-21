@@ -1,0 +1,17 @@
+node_modules
+**/node_modules
+**/dist
+data
+backups
+coverage
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+.video_agent
+.DS_Store
+*.log
+docs
+.github
+README.md
