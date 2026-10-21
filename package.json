@@ -6,9 +6,19 @@
   "description": "Throughline — open-source delivery workspace with page-to-API mapping",
   "license": "MIT",
   "author": "Throughline contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryancole1957/throughline.git"
+  },
+  "homepage": "https://github.com/ryancole1957/throughline#readme",
+  "bugs": {
+    "url": "https://github.com/ryancole1957/throughline/issues"
+  },
   "keywords": [
     "delivery",
-    "knowledge-transfer",
+    "delivery-workspace",
+    "page-to-api",
+    "api-mapping",
     "operations",
     "audit",
     "express",

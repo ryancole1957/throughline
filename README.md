@@ -5,6 +5,7 @@
 Throughline keeps delivery progress, ownership, evidence, and the page-to-API map in one place. Teams can see what is ready, who is accountable, which frontend page depends on which backend contract, and what remains before a delivery milestone or release can be signed off.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![CI](https://github.com/ryancole1957/throughline/actions/workflows/ci.yml/badge.svg)](https://github.com/ryancole1957/throughline/actions/workflows/ci.yml)
 [![Node.js 22+](https://img.shields.io/badge/Node.js-22%2B-5FA04E.svg)](https://nodejs.org/)
 [![Version](https://img.shields.io/badge/version-3.4.0-informational.svg)](CHANGELOG.md)
 
